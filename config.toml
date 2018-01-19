@@ -1,0 +1,93 @@
+baseurl = "https://example.org/"
+languageCode = "en-us"
+title = "精通以太坊"
+theme = "material"
+metadataformat = "yaml"
+canonifyurls = true
+# Enable Google Analytics by entering your tracking id
+googleAnalytics = ""
+
+[params]
+	# General information
+	author = "虞双齐"
+	description = "从零成长为以太坊高级开发者"
+	copyright = "根据MIT许可证发布"
+
+	# Repository
+	provider = "GitHub"
+	repo_url = "https://github.com/ysqi/etheraction.git"
+
+	version = "1.0.0"
+	logo = "images/logo.png"
+	favicon = ""
+
+	permalink = "#"
+
+	# Custom assets
+	custom_css = []
+	custom_js  = []
+
+	# Syntax highlighting theme
+	highlight_css  = ""
+
+	[params.palette]
+		# red, pink, purple, deep purple, indigo, blue, light-blue, cyan, teal, green, light-green, lime, yellow, amber, orange, deep-orange, brown, grey and blue-grey. 
+    	primary = "green"
+    	accent  = "teal"
+
+    [params.font]
+		useimage = true
+    	text = "Noto Sans CJK"
+    	code = "Ubuntu Mono"
+
+
+[social]
+	twitter = ""
+	github  = "ysqi"
+	email   = "devysq@gmail.com"
+
+ 
+[[menu.main]]
+    name = "前言"
+	url = "/"
+	weight = 1
+
+[[menu.main]]
+    name = "第一章 基础知识"
+	url = "/basic/"
+	identifier ="basic"
+	weight = 10
+	
+ 
+
+[[menu.main]]
+    name = "第二章 智能合约"
+	url = "/contract/"
+	identifier ="contract"
+	weight = 20	
+
+
+[[menu.main]]
+    name = "第三章 Solidify 官方文档中译版"
+	url = "/solidify/"
+	identifier ="solidify"
+	weight = 30	
+
+
+[[menu.main]]
+    name = "第四章 实战"
+	url = "/action"
+	identifier ="action"
+	weight = 40	 
+	
+
+[[menu.main]]
+    name = "license"
+	url = "/license/" 
+	weight = 9999	 
+
+[blackfriday]
+	smartypants	= true
+	fractions = true
+	smartDashes = true
+	plainIDAnchors = true
