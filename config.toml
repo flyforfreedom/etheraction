@@ -1,9 +1,10 @@
-baseurl = "https://example.org/"
-languageCode = "en-us"
+baseurl = "https://ether.goall.top"
+languageCode = "zh-cn"
 title = "精通以太坊"
 theme = "material"
 metadataformat = "yaml"
 canonifyurls = true
+uglyURLs = true
 # Enable Google Analytics by entering your tracking id
 googleAnalytics = ""
 
@@ -83,7 +84,7 @@ googleAnalytics = ""
 
 [[menu.main]]
     name = "license"
-	url = "/license/" 
+	url = "/license" 
 	weight = 9999	 
 
 [blackfriday]
