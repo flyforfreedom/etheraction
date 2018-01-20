@@ -3,7 +3,7 @@ date: 2016-03-09T20:10:46+01:00
 title: License 
 ---
  
-Copyright 2018 devysq@gmail.com
+Copyright 2018 虞双齐 - devysq@gmail.com
 ```txt
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
