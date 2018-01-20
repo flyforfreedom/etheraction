@@ -11,7 +11,7 @@ googleAnalytics = ""
 	# General information
 	author = "虞双齐"
 	description = "从零成长为以太坊高级开发者"
-	copyright = "根据MIT许可证发布"
+	copyright = "根据Apache 2.0 许可发布"
 
 	# Repository
 	provider = "GitHub"
@@ -69,8 +69,8 @@ googleAnalytics = ""
 
 [[menu.main]]
     name = "第三章 Solidify 官方文档中译版"
-	url = "/solidify/"
-	identifier ="solidify"
+	url = "/solidity/doc"
+	identifier ="soliditydoc"
 	weight = 30	
 
 

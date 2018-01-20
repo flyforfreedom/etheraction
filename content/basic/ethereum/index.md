@@ -1,6 +1,7 @@
 ---
 date: 2016-03-09T00:11:02+01:00
 title: 以太坊概念 
+weight: 1010
 menu:
     main:
       identifier: basicethereum

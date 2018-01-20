@@ -1,7 +1,8 @@
 ---
 date: 2016-03-09T00:11:02+01:00
-title: 理解Gas
-weight: 1 
+title: 理解Gas 
+weight: 1003
+weight: 1011
 menu:
     main:
       parent: basicethereum
