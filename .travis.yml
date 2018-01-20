@@ -21,7 +21,7 @@ script:
 
 env:
   global:
-  - REPO="https://github.com/ysqi/etheraction.git"
+  - REPO="github.com/ysqi/etheraction.git"
   - USER="ysqi"
   - EMAIL="devysq@gmail.com"
   - SOURCE_DIR="public"
