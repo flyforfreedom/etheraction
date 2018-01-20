@@ -1,28 +1,22 @@
 ---
 date: 2016-03-08T21:07:13+01:00
-title: Material for Hugo
+title: 精通以太坊
 type: index
 weight: 0
 ---
 
-## Beautiful documentation
+> 持续写作
 
-Material is a theme for [Hugo](https://gohugo.io), a fast and flexible static site generator. It is built using Google's [material design](https://www.google.com/design/spec/material-design/introduction.html)
-guidelines, fully responsive, optimized for touch and pointer devices as well
-as all sorts of screen sizes.
+将以太坊的学习过程，积累为一笔有实际指导意义的电子书，供大家参考查验。
 
-![Material Screenshot](/images/screen.png)
+![ethereum](/images/ethereum.jpeg)
 
-Material is very lightweight – it is built from scratch using Javascript and
-CSS that weighs less than 30kb (minified, gzipped and excluding Google Fonts
-and Analytics). Yet, it is highly customizable and degrades gracefully in older
-browsers.
 
-## Quick start
+{{< note title="提醒" >}}
+一步一步写作中....
+{{< /note >}}
 
-Install with `git`:
 
-```sh
-git clone git@github.com:digitalcraftsman/hugo-material-docs.git themes/hugo-material-docs
-```
- 
+{{< warning title="欢迎" >}}
+欢迎投稿、反馈错误、一起学习....
+{{< /warning >}}

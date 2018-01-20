@@ -10,9 +10,7 @@ menu:
 ---
 
 ## Solidity
-
-![solidity logo](images/soliditylogo.svg)
-
+<div align="center" class="align-center"><img alt="Solidity logo" src="/images/soliditylogo.svg" width="120px"></div>
 Solidity 是面向智能合约的高级编程语言，它的设计受 C++、Python和JavaScript影响，旨在针对以太坊虚拟机(EVM)。
 
 Solidity 是静态类型语言，支持继承，库和复杂的自定义类型等功能。
@@ -118,12 +116,6 @@ ANTLR4 解析器生成器的 Solidity 语法。
 最后和更多的章节将全面深度覆盖 Solidity。
 
 如果您仍有疑问，可尝试在 [以太坊Stackexchange](https://ethereum.stackexchange.com/) 上搜索或询问，或者进入我们的[ Gitter 聊天频道](https://gitter.im/ethereum/solidity/)。 永远欢迎改善 Solidity 或本文档的想法！
-
-## 内容目录
-
-[TOC]
-
-
 
 
 
