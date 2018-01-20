@@ -1,4 +1,4 @@
-baseurl = "https://ether.goall.top"
+baseurl = "https://ether.goall.top" 
 languageCode = "zh-cn"
 title = "精通以太坊"
 theme = "material"
@@ -7,6 +7,9 @@ canonifyurls = true
 uglyURLs = true
 # Enable Google Analytics by entering your tracking id
 googleAnalytics = ""
+
+# 启用rebots
+enableRobotsTXT = true 
 
 [params]
 	# General information
