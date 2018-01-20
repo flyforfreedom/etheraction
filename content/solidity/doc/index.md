@@ -1,7 +1,7 @@
 ---
 title: "简介"
 date: 2018-01-20T06:10:54+08:00
-draft: true 
+draft: false 
 weight: 3001 
 menu:
     main:

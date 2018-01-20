@@ -1,7 +1,7 @@
 ---
 title: "安装 Solidity"
 date: 2018-01-20T06:16:54+08:00
-draft: true
+draft: false
 weight: 3003
 menu:
     main:
