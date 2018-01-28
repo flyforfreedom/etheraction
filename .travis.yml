@@ -10,6 +10,7 @@ branches:
 before_install: 
 # for html-minifier
 - sudo pip install Pygments
+- sudo pip install pygments-lexer-solidity
 install:
 - mkdir work
 - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.deb
