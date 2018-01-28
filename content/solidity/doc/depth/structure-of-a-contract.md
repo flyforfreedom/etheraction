@@ -15,7 +15,7 @@ menu:
 ## 状态变量 {#state-variables}
 
 状态变量（state variables）是永久存储在合约存储器中的值。
-```
+```solidity
 pragma solidity ^0.4.0;
 
 contract SimpleStorage {
@@ -29,7 +29,7 @@ contract SimpleStorage {
 ## 方法 {#functions}
 
 方法是合约中的可执行单元。
-```js
+```solidity
 pragma solidity ^0.4.0;
 
 contract SimpleAuction {
@@ -45,7 +45,7 @@ contract SimpleAuction {
 
 方法修饰符可以用来以声明的方式（详见合约章节的[Function Modifiers]({{<ref "#modifiers">}})）修改方法的语义。
 
-```js
+```solidity
 pragma solidity ^0.4.11;
 
 contract Purchase {
@@ -65,7 +65,7 @@ contract Purchase {
 ## 事件 {#events}
 事件是太坊虚拟机(EVM) 日志设备的便利入口。
 
-```js
+```solidity
 pragma solidity ^0.4.0;
 
 contract SimpleAuction {
@@ -82,7 +82,7 @@ contract SimpleAuction {
 ## 结构类型 {#struct-types}
 
 结构是自定义类型，能分组多个便利。（在类型章节查阅[结构]({{<ref "#structs">}})）。
-```js
+```solidity
 pragma solidity ^0.4.0;
 
 contract Ballot {
@@ -99,7 +99,7 @@ contract Ballot {
 
 枚举可用来创建具有有限的一组值的自定义类型（在类型章节查阅[枚举]({{<ref "#enums">}})）。
 
-```js
+```solidity
 pragma solidity ^0.4.0;
 
 contract Purchase {
