@@ -21,14 +21,14 @@ Solidity 是静态类型语言，支持继承，库和复杂的自定义类型�
 现在，学习 Solidity 的最佳途径是用在线IDE [Remix](https://remix.ethereum.org/)(可能需要加载一段时间完成准备，请耐心等待)。
 {{< /note >}}
 
-## 交易
+## 交易 {#transaction}
 
 下面文档已被社区志愿者翻译成几种语言，但是英文版可作为参考。
 
 + [Spanish](https://solidity-es.readthedocs.io/)
 + [Russian](https://github.com/ethereum/wiki/wiki/%5BRussian%5D-%D0%A0%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE-%D0%BF%D0%BE-Solidity)(已过时)
 
-## 有用链接
+## 有用链接 {#useful}
 
 * [以太坊官网](https://ethereum.org)
 * [Solidity更新日志](https://github.com/ethereum/solidity/blob/develop/Changelog.md)
@@ -37,7 +37,7 @@ Solidity 是静态类型语言，支持继承，库和复杂的自定义类型�
 * [以太坊 Stackexchange](https://ethereum.stackexchange.com/)
 * [Gitter聊天](https://gitter.im/ethereum/solidity/)
 
-## 可用的 Solidity 集成
+## 可用的 Solidity 集成 {#solidity-source}
 
 + [Remix](https://remix.ethereum.org)
 基于浏览器的IDE，含编译器和运行环境，无需服务端组件。
@@ -80,7 +80,7 @@ Vim 编译器下 Solidity 插件，支持编译检查。
 + [Mix IDE](https://github.com/ethereum/mix/)
 + [Ethereum Studio](https://live.ether.camp/)	
 
-## Solidity 工具集
+## Solidity 工具集 {#tool}
 
 
 * [Dapp](https://dapp.readthedocs.io)
@@ -99,7 +99,7 @@ EVM 反编译，对字节码进行静态分析，为字节码提供比原始 EVM
 * [Doxity](https://github.com/DigixGlobal/doxity)
 Solidity 文档生成器。
 
-## 第三方 Soldity 解析器和语法
+## 第三方 Soldity 解析器和语法 {#other}
 
 * [solidity-parser](https://github.com/ConsenSys/solidity-parser)
 JavaScript版 Solidity 解析器。
@@ -107,7 +107,7 @@ JavaScript版 Solidity 解析器。
 * [Solidity Grammar for ANTLR 4](https://github.com/federicobond/solidity-antlr4)
 ANTLR4 解析器生成器的 Solidity 语法。
 
-## 编程语言文档
+## 编程语言文档 {#doc}
 
 接下几页，我们首先将看到一个 Solidity 所写简单的智能合约，其中包括 [区块链](content/soliditydoc/introduction-to-smart-contracts.md) 和 [以太坊虚拟机](content/soliditydoc/introduction-to-smart-contracts.md) 基础知识。
 

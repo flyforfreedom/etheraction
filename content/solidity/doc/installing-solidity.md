@@ -175,7 +175,7 @@ cmake -G "Visual Studio 14 2015 Win64" ..
 命令尾行会在 build 目录下创建一个 solidity.sln 文件，双击使用 Visual Studio 打开。我们仅仅只要创建 **RelWithDebugInfo** 配置文件。
 
 或者用命令创建：
-```bahs
+```sh
 cmake --build . --config RelWithDebInfo
 ```
 
