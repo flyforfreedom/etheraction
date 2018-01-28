@@ -1,6 +1,10 @@
 ---
 date: 2016-03-09T20:10:46+01:00
 title: License 
+weight: 9002
+menu:
+    main:
+      parent: about
 ---
  
 Copyright 2018 虞双齐 - devysq@gmail.com

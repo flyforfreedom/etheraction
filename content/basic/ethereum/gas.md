@@ -9,14 +9,14 @@ menu:
 ---
 
 
-## 背景介绍
+## 背景介绍 {#beijing}
 以太坊是一个区块链网络，而Ether(ETH)是这个网络的助燃器。当你发送Token、执行合约、转移ETH或者在此区块上干其他的。你必须为此计算而支出，此支出是通过 `Gas`计算，最终将gas以ETH支付。
 
 需要注意的是，无论交易成功与否，你都需为此支付手续费。即使交易失败，可矿工还是得为此交易进行校验和计算，你占用使用了计算资源所以必须和成功的交易一样，为此支付手续费。
 
 你可在 [etherscan.io](etherscan.io) 上查看交易手续费（`gas limit` * `gas price`）的情况，在钱包中你是无法选择多少交易费的，因为实际交易费是矿工根据计算得出的，并记录在包含此交易的区块中。
 
-## 概要
+## 概要 {#base}
 当你听到`gas`时，是在讨论两个东西：
 
 + Gas Limit
@@ -48,7 +48,7 @@ menu:
 + Ether = 10^{18} Wei
 
 
-## Gas
+## Gas 
 Gas 是以太坊中一种特定的命名，表示执行一个操作所需要的多少计算工作。 比如要执行一次加密[Keccak256](https://ethereum.stackexchange.com/questions/550/which-cryptographic-hash-function-does-ethereum-use)将消耗30gas。在以太坊中每个操作动作都有对应的gas。更多内容可查看[What is gas (StackExchange)](https://ethereum.stackexchange.com/questions/3/what-is-meant-by-the-term-gas)。
 
 一般交易需要花费多少gas则取决于此完成此交易过程中的所执行的操作的累计gas。
@@ -80,7 +80,10 @@ Gas 是以太坊中一种特定的命名，表示执行一个操作所需要的�
 + 如果你想在在Token创建期间发送交易（非Token创建），你有两个选择：等待一会儿直到Token创建结束，或者提高燃油单价超过50 GWEI。
 
 
-##  提高gas price就能快速打包确认？降低gas price就会难以被确认？
+## 思考 {#QA}
+
++ 提高gas price就能快速打包确认？
++ 降低gas price就会难以被确认？
 
 交易手续费将归属于挖出本本区块的矿工。当矿工挖矿时，他需要决定哪些交易放入到区块中。可以不包含任何交易，也可以随机选择交易。为了鼓励让矿工将你的交易放入区块，你会考虑将燃油单价设置得足够高，已确保能优先放入区块。但这还是一厢情愿，这个最终取决于矿工。
 
@@ -88,13 +91,13 @@ Gas 是以太坊中一种特定的命名，表示执行一个操作所需要的�
 
 设得足够高的燃油单价交易会在下一个区块中。如果你着急，高燃油单价会使得你的交易排在别人前面。如果不着急，你只需设置一个足够让矿工包含你交易的燃油单价即可。
 
-## 为何要设置低gas price?
+## 为何要设置低gas price? {#low-gas-price}
 因为以太坊的价格是浮动的，相对人民币随时都涨跌20%。按人民币考虑，相对于之前的交易，10 gas price 相当于 ￥ 0.3。而现在可能即使 ￥0.4了。所以需要根据实际情况，尽量调低 gas price 。
 
 而当网络中大部分交易都是低gas price时，矿工也会去调整他的底限。 
 
 
-## 到底设置多少 gas price 合适
+## 到底设置多少 gas price 合适 {#how-set-gas-price}
 
 可以看这个网站：[http://ethgasstation.info](http://ethgasstation.info/)。
 

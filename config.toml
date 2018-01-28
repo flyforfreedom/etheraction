@@ -57,33 +57,31 @@ pygmentsstyle = "friendly"
 		useimage = true
     	text = "Noto Sans CJK"
     	code = "Ubuntu Mono"
-
-[[social]] 
-    type = "github"
-    link= "https://github.com/squidfunk"
-[[social]] 
-	type = "twitter"
-    link= "https://twitter.com/squidfunk"
-[[social]] 
-	type = "linkedin"
-    link= "https://linkedin.com/in/squidfunk"
-
+	
 	[params.theme.feature]
 		tabs = true
 
-
-[[menu.main]]
-    name = "前言"
-	url = "/"
-	weight = 1
-
+	[[params.social]] 
+		type = "github"
+		link= "https://github.com/ysqi"
+	[[params.social]] 
+		type = "wordpress"
+		link= "https://yushuangqi.com"
+	[[params.social]] 
+		type = "weibo"
+		link= "https://weibo.com/234665601"
+	[[params.social]] 
+		type = "user-circle"
+		link= "https://www.zhihu.com/people/_ysqi/"	
+	[[params.social]] 
+		type = "envelope-o"
+		link= "mailto:devysqi@gmail.com"	
+ 
 [[menu.main]]
     name = "基础知识"
 	url = "/basic/"
 	identifier ="basic"
 	weight = 10
-	
- 
 
 [[menu.main]]
     name = "智能合约"
@@ -91,25 +89,24 @@ pygmentsstyle = "friendly"
 	identifier ="contract"
 	weight = 20	
 
-
 [[menu.main]]
     name = "Solidiy官方文档中文版"
 	url = "/solidity/doc"
 	identifier ="soliditydoc"
 	weight = 30	
-
-
+	
 [[menu.main]]
     name = "实战"
-	url = "/action"
-	identifier ="action"
+	url = "/action" 
+	identifier="action"
 	weight = 40	 
 	
 
 [[menu.main]]
     name = "关于"
-	url = "/license" 
-	weight = 9999	 
+	url = "/about" 
+	identifier="about"
+	weight = 9000	 
 
 [blackfriday]
 	smartypants	= true
