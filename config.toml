@@ -11,6 +11,12 @@ googleAnalytics = ""
 # 启用rebots
 enableRobotsTXT = true 
 
+# user pygment and 
+pygmentsUseClassic = true 
+pygmentsuseclasses = true
+PygmentsCodeFences = true
+pygmentsstyle = "friendly" 
+
 [params]
 	# General information
 	author = "虞双齐"
@@ -19,13 +25,16 @@ enableRobotsTXT = true
 
 	# Repository
 	provider = "GitHub"
+	repo_name = "ysqi/etheraction"
 	repo_url = "https://github.com/ysqi/etheraction"
 
 	version = "1.0.0"
 	logo = "images/logo.png"
+	icon = ""
 	favicon = ""
 
-	permalink = "#"
+	# Permanent link char , Default "¶" 
+	permalink = ""
 
 	# Custom assets
 	custom_css = []
@@ -34,30 +43,42 @@ enableRobotsTXT = true
 	# Syntax highlighting theme
 	highlight_css  = ""
 
+	# Material supports both, left-to-right (ltr) and right-to-left (rtl) text direction, Default "ltr"
+	direction = ""
+	
+	[params.plugins]
+		search = true
 	[params.palette]
 		# red, pink, purple, deep purple, indigo, blue, light-blue, cyan, teal, green, light-green, lime, yellow, amber, orange, deep-orange, brown, grey and blue-grey. 
-    	primary = "green"
-    	accent  = "teal"
+    	primary = "light-gren"
+    	accent  = "indigo"
 
     [params.font]
 		useimage = true
     	text = "Noto Sans CJK"
     	code = "Ubuntu Mono"
 
+[[social]] 
+    type = "github"
+    link= "https://github.com/squidfunk"
+[[social]] 
+	type = "twitter"
+    link= "https://twitter.com/squidfunk"
+[[social]] 
+	type = "linkedin"
+    link= "https://linkedin.com/in/squidfunk"
 
-[social]
-	twitter = ""
-	github  = "ysqi"
-	email   = "devysq@gmail.com"
+	[params.theme.feature]
+		tabs = true
 
- 
+
 [[menu.main]]
     name = "前言"
 	url = "/"
 	weight = 1
 
 [[menu.main]]
-    name = "第一章 基础知识"
+    name = "基础知识"
 	url = "/basic/"
 	identifier ="basic"
 	weight = 10
@@ -65,28 +86,28 @@ enableRobotsTXT = true
  
 
 [[menu.main]]
-    name = "第二章 智能合约"
+    name = "智能合约"
 	url = "/contract/"
 	identifier ="contract"
 	weight = 20	
 
 
 [[menu.main]]
-    name = "第三章 Solidify 官方文档中译版"
+    name = "Solidiy官方文档中文版"
 	url = "/solidity/doc"
 	identifier ="soliditydoc"
 	weight = 30	
 
 
 [[menu.main]]
-    name = "第四章 实战"
+    name = "实战"
 	url = "/action"
 	identifier ="action"
 	weight = 40	 
 	
 
 [[menu.main]]
-    name = "license"
+    name = "关于"
 	url = "/license" 
 	weight = 9999	 
 
@@ -95,3 +116,4 @@ enableRobotsTXT = true
 	fractions = true
 	smartDashes = true
 	plainIDAnchors = true
+ 
