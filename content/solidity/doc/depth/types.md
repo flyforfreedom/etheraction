@@ -1,7 +1,7 @@
 ---
 title: "类型"
 date: 2018-01-22T06:41:39+08:00
-draft: true
+draft: false
 weight: 3053
 menu:
     main:
@@ -9,33 +9,37 @@ menu:
       parent: "solidityindepth"
 ---
 
-Solidity 是一门静态类型语言，意味着每个变量（状态变量和本地变量）类型都需要在编译期确定（或至少是已知的——见下方的 [类型推导]({{<ref "#type-deduction">}})）。 Solidity 提供了几个基础类型，可以组合成复杂类型。
+Solidity 是一门静态类型语言，意味着每个变量（状态变量和局部变量）类型都需要在编译期确定（或至少是已知的见下方 [类型断言]({{<ref "#Type-Deduction">}})）。 Solidity 提供了几个基础类型，可以组合成复杂类型。
 
 此外，类型可在含运算符的表达式中交互。快速查阅各种运算，请见[运算符优先级](http://solidity.readthedocs.io/en/latest/miscellaneous.html#order)
 
 ## 值类型
 
-下面所列类型均可称为值类型，因为它们的变量总是值传递。即，当作为方法参数或用作赋值时，总是拷贝值。
+下面所列类型均可称为值类型，因为它们的变量总是值传递。即当作为方法参数或用作赋值时，总是值拷贝。
 
 ### 布尔型 {#booleans}
 
-布尔类型 ` bool `  ，其可能有的值是常量 ` true `  和 ` false ` 。
+布尔类型 ` bool `  ，其只可能有的值是常量 ` true `  和 ` false ` 。
 
-运算操作有：
+运算符有：
 
-|运算符|含义|
-|---|---|
-| **!** | 逻辑否 |
-| **&&** | 逻辑且(and) |
-| **\|\|** | 逻辑或(or) |
-| **==** | 等于 |
-| **!=** | 不等于|
++ **!** ： 逻辑否 
++ **&&** ： 逻辑且(and) 
++ **\|\|** ： 逻辑或(or) 
++ **==** ： 等于 
++ **!=** ： 不等于
 
- ` || ` 和 ` && ` 运算符常用短路求值(short-circuiting)策略。意思是，在表达式 ` f(x) || g(y) ` 中，如果 ` f(x) ` 运算结果是 ` true ` ，则 ` g(y) ` 不会被运算，哪怕它有副作用。
+ ` || ` 和 ` && ` 运算符常用短路求值(short-circuiting)策略。意思是在表达式 ` f(x) || g(y) ` 中，如果 ` f(x) ` 运算结果是 ` true ` ，则 ` g(y) ` 不会被运算，哪怕它有副作用。
+
+{{<adm type="quote" title="Wiki">}}
+短路求值（Short-circuit evaluation，又称最小化求值），是一种逻辑运算符的求值策略。只有当第一个运算数的值无法确定逻辑运算的结果时，才对第二个运算数进行求值。例如，当 AND 的第一个运算数的值为 false 时，其结果必定为 false ；当 OR 的第一个运算数为 true 时，最后结果必定为 true ，在这种情况下，就不需要知道第二个运算数的具体值。在一些语言中（如Lisp），默认的逻辑运算符就是短路运算符，而在另一些语言中（如 Java，Ada ），短路和非短路的运算符都存在。对于一些逻辑运算，如 XOR，短路求值是不可能的 。
+
+短路表达式` x AND y `，事实上等价于条件语句：`if x then y else false`。短路表达式`x OR y`，则等价于条件语句：`if x then true else y`。 
+{{</adm>}}
 
 ### 整数型 {#integers}
 
-整数类型分 ` int ` 和 ` uint ` 。有符号和无符号各种不同位长度的整数，从 ` uint8 `  到 ` uint256 `  有8个（无符号 8 到 256 位），还有 ` int8 `  到 ` int256 ` 。 且 ` uint `  和 ` int `  分别是 ` uint256 `  和 ` int256 ` 的别名。
+整数类型分有符号`int`和无符号`uint`各种不同位大小的整数，从 ` uint8 `  到 ` uint256 `  有 8 个（无符号 8 到 256 位），还有 ` int8 `  到 ` int256 ` 。  ` uint `  和 ` int `  分别是 ` uint256 `  和 ` int256 ` 的别名。
 
 运算操作有：
 
@@ -43,7 +47,7 @@ Solidity 是一门静态类型语言，意味着每个变量（状态变量和�
 + 位运算： ` & ` 、 ` | ` 、 ` ^ ` (按位异或)、 ` ~ ` (按位取反)、` << ` （左移）、 ` >> ` （右移）
 + 算术运算： ` + ` 、 ` - ` 、一元 ` - `和` + ` 、 ` * ` 、 ` / ` 、 ` % ` (取余)、 ` ** ` (幂)
 
-整数相除总是截断取整的（它只别编译到 EVM 的 `DIV`操作码），但如果两个数都是有小数（或是小数表达式）时则不会截断。
+整数相除总是截断取整的（它只被编译到 EVM 的 `DIV`操作码），但如果两个数都是有小数（或是小数表达式）时则不会截断。
 
 除以零和零取模会抛出运行时异常。
 
@@ -56,50 +60,49 @@ Solidity 是一门静态类型语言，意味着每个变量（状态变量和�
 在 Solidity 中右移映射到除法，因此位移后的负值将趋向与零（被截断）。在其他编程语言中，右移负数形同相除再四舍五入（趋向负无穷大）。
 {{< /warning >}}
 
-## 定点数 {#fixed-point-numbers}
+### 定点数 {#fixed-point-numbers}
 
-{{< warning title="未完整支持" >}}
-在 Solidity 中定点数尚未完整支持。能够定义它们，但不能被分配或从。
-{{< /warning >}}
+{{< adm type="bug" title="未完整支持" >}}
+在 Solidity 中定点数尚未完整支持。能够定义它们，但不能被分配。
+{{< /adm >}}
  
 定点数有 `fixed` 或 `ufixed`，有符合和无符号定点数各有不同位长度数字。`ufixedMxN` 和 `fixedMxN`，这里 `M` 表示该类型所代表的数字位长度，`N` 表示有多少小数点可用。 `M` 必须是从 8 位到 256 位间且能被 8 整除。`N` 必须是 `0` 到 `80` 之间。还包括，`ufixed` 和 `fixed` 分别是 `ufixed128x19` 和 `fixed128x19` 的别名。
 
 运算符：
+
 + 比较运算： `<=`、`<`、`==`、`!=`、`>=`、`>` (结果为布尔 bool )
-+ 算术元素：`+`、`-`、一元`-`和一元`+`、`*`、`、`、`%`（取余）
++ 算术元素：`+`、`-`、一元`-`和`+`、`*`、`、`%`（取余）
 
 
-{{< note title="与浮点数" >}}
+{{< adm type="tip" title="vs 浮点数" >}}
 浮点数（在其他许多语言中的`float` 和 `double`，精度更高的 IEEE754 规范）和 定点数的主要区别是，前者是整数部分和小数部分的位长度是灵活的，而在后者中是严格界定的。通常，一般来说，在浮点数中，几乎整个空间都用来表示数字，而只有少量的位长定义了小数点的位置。
-{{< /note >}}
+{{< /adm >}}
 
-## 地址 {#address}
+### 地址 {#address}
 
 地址 `address` 是保存 20 个字节的值（以太坊账户地址长度）。地址类型也有成员，是所有合约的基础。
 
 运算符：
 + `<=`、`<`、`==`、`!=`、`>=`和`>` 
 
-{{< note title="Note" >}}
+{{< adm type="info" >}}
 从 0.5.0 版本开始，合约不是从地址类型派生的，但仍然可以明确地将合约转换为地址。
-{{< /note >}}
+{{< /adm >}}
 
 ### 地址成员 {#member-of-address}
 
 + **余额 `balance` 和 转账 (`transfer`)**
 
-请参阅 [Address Related](http://solidity.readthedocs.io/en/latest/units-and-global-variables.html#address-related) ,以快速参考。
-
-是可以使用属性 `balance` 查询地址余额的，且可使用 `transfer` 方法发送 Ether(以 wei 为单位)到一个账户：
+详见 [Address Related](http://solidity.readthedocs.io/en/latest/units-and-global-variables.html#address-related)。是可以使用属性 `balance` 查询地址余额的，且可使用 `transfer` 方法发送 Ether(以 wei 为单位)到一个账户：
 ```solidity
 address x = 0x123;
 address myAddress = this;
 if (x.balance < 10 && myAddress.balance >= 10) x.transfer(10);
 ```
 
-{{< note title="与浮点数" >}}
-如果 `x` 是合约地址，它的代码（更确切的说：它的回退方法，如果有）将被和 `transfer` 调用一起执行（这是 EVM 的一个特性，不能被绕开）。如果执行 gas 耗尽或者任何方式的失败，这 Ether 转账将被恢复（注：即回退交易），且当前合约而终止执行。
-{{< /note >}}
+{{<adm type="info" >}}
+如果 `x` 是合约地址，它的代码（更确切的说：它的回退方法，如果有）将被和 `transfer` 调用一起执行（这是 EVM 的一个特性，不能被绕开）。如果执行 gas 耗尽或者任何方式的失败，这 Ether 转账将被恢复（注：即回退交易），且合约终止执行。
+{{</adm>}}
 
 
 + **发送 (`send`)**
@@ -107,23 +110,22 @@ if (x.balance < 10 && myAddress.balance >= 10) x.transfer(10);
 发送是转账的低级副本，如果执行失败，当前合约不会停止，但 `send` 将返回 `false`。
 
 
-{{< warning title="与浮点数" >}}
-使用 `send` 是有些危险的，如果执行堆栈深度到了 1024 （caller 强制限制） 则交易失败。同样 gas 耗尽也会失败。所以为了让转账安全，应总检查 `send` 返回值。 使用 `transfer` 或更好：使用一种收款人取款的模式。
-{{< /warning >}}
+{{<adm type="warning" >}}
+使用 `send` 是有些危险的，如果执行堆栈深度到了 1024 （caller 强制限制） 则交易失败。同样 gas 耗尽也会失败。所以为了让转账安全，应总检查 `send` 返回值。 使用 `transfer` 也许更好：相当于一种收款人取款的模式。
+{{</adm>}}
 
 + **调用(call)**、**callcode**、**委托调用(delegatecall)**
 
-此外，不遵循 ABI 合约接口，方法 `call` 提供任意类型的任意数量的参数。这些参数被填充到 32 字节并连接起来。一个例外是，第一个参数会被编码为四个字节。在此情况下，不允许
-使用函数签名来填充。
+此外，不遵循 ABI 合约接口，函数 `call` 支持任意类型的任意数量的参数。这些参数被填充到 32 字节并连接起来。一个例外是，第一个参数总会被编码为四个字节。在此情况下，不允许使用函数签名来填充。
 
 ```solidity
 address nameReg = 0x72ba7d8e73fe8eb666ea66babc8116a41bfb10e2;
 nameReg.call("register", "MyName");
 nameReg.call(bytes4(keccak256("fun(uint256)")), a);
 ```
-`call` 返回一个布尔值，来表明是否被调用方法被终止(`true`)还是引发了 EVM 异常 (false)。不可能访问返回的实际数据（这得需要我们事先知道编码和大小）。
+`call` 返回一个布尔值，来表明是否被调用方法被终止(true)还是引发了 EVM 异常 (false)。是无法访问调用返回的实际数据（这得需要我们事先知道函数返回值的编码和大小）。
 
-可以用 `.gas()` 修饰符来调整供给的 gas :
+可以用 `.gas()` 修改符来调整所供给的 gas :
 ```solidity
 namReg.call.gas(1000000)("register", "MyName");
 ```
@@ -131,126 +133,129 @@ namReg.call.gas(1000000)("register", "MyName");
 ```solidity
 namReg.call.value(1 ether)("register", "MyName");
 ```
-最后，这些修改可以连接在一起，顺序无关紧要：
+最后这些修改符可以连接在一起，顺序无关紧要：
+```solidity
 nameReg.call.gas(1000000).value(1 ether)("register", "MyName");
-
-{{< note title="Note" >}}
-在重载方法上是不可能使用 gas 和 value 修改器的。
+```
+{{<adm type="info" >}}
+在重载方法上是无法使用 gas 和 value 修改符的。
 
 解决方案是引入一个 gas 和 value 特例，只需重新检查它们是否存在于重载分析点。
-{{< /note >}}
+{{</adm>}}
 
-类似地，`delegatecall` 方法能被使用。区别在于只用给定地址的代码，所有其他内容（存储，余额）都从当前合约中获取。`delegatecall`的用意是使用存储在其他合约中的库代码。用户必须确保两个合同中的存储布局适合委托使用。从 Prior 版 到 homestead 版，只有一个名为 `callcode` 的有限变天可用，它不提供对原始 `msg.sender` 和 `msg.value` 值得访问。
+类似地，能使用 `delegatecall` 函数。区别在于只用给定地址的代码，所有其他内容（存储，余额）都从当前合约中获取。`delegatecall`的用意是使用存储在其他合约中的库代码。用户必须确保两个合同中的存储布局适合委托使用。从以太坊的 Prior 版 到 Homestead 版，只有一个名为 `callcode` 的有限变种可用，它不提供对原始 `msg.sender` 和 `msg.value` 值得访问。
 
-此三个方法 `call`、`delegatecall` 和 `callcode` 是非常低级别功能，只能做为最后手段，因为他们打破了 Solidity 的类型安全性。
+这三个函数 `call`、`delegatecall` 和 `callcode` 是非常低级别功能，只能做为最后手段使用，因为他们打破了 Solidity 的类型安全性。
 
-`.gas()` 选项适用此三个方法，而已 `.value()`选项不支持 `delegatecall`
+`.gas()` 适用此三个方法，而已 `.value()`不支持 `delegatecall`
 
-{{< note title="Note" >}} 
+{{<adm type="tip">}} 
 所有 contact 继承 address 成员，因此可以使用 `this.balance` 查询当前合约余额。
-{{< /note >}}
+{{</adm>}}
 
 
-{{< note title="Note" >}} 
-不鼓励使用 `callcode` ，在未来，将移除它。
-{{< /note >}}
+{{<adm type="warning">}} 
+不鼓励使用 `callcode` ，将在未来移除它。
+{{</adm>}}
 
+{{<adm type="warning">}}
+所有这些功能都是低级功能，应谨慎使用。具体而言，任何未知合约都可能是恶意的。如果你调用它，那么将把控制权移交给那个合约，然后再获得返回值到你的合约。以在调用返回时准备好更改状态变量。
+{{</adm>}}
 
-{{< warning title="Note" >}} 
-所有这些功能都是低级功能，应谨慎使用。具体而言，任何未知合约都可能是恶意的，如果你调用它，你把控制权移交给那个合约，然后再返回到你的合约。以便在调用返回时，准备好更改状态变量。
-{{< /warning >}}
+### 定长字节数组 {#fixed-size-byte-arrays}
 
-## 定长字节数组 {#fixed-size-byte-arrays}
-
-固定大小有`bytes1`、`bytes2`、`bytes3`、...、`bytes32`，`byte` 是 `bytes1`别名。
+固定长度有`bytes1`、`bytes2`、`bytes3`、...、`bytes32`，`byte` 是 `bytes1`别名。
 
 运算符：
 
-+ 比较运算：`<=`、`<`、`==`、`!=`、`>=`和`>` （结果为 `bool`）
++ 比较运算：`<=`、`<`、`==`、`!=`、`>=`、`>` （结果为 `bool`）
 + 位运算： ` & ` 、 ` | ` 、 ` ^ ` (按位异或)、 ` ~ ` (按位取反)、` << ` （左移）、 ` >> ` （右移）
 + 索引访问： 如果 `x` 是 `bytesI` 类型，则 `x[k]`（0<= k <= I）返回第 `k` 个字节（只读）。 
 
 位移运算符使用任何整数类型作为右操作数（但将返回左操作数的类型），这表示要移位的位数。位移负数将导致运行时异常。
 
-### 成员
+#### 成员
 
 + `length` 字段返回字节数组的固定长度（只读）。
 
-{{< note title="Note" >}} 
-可以使用字节数组作为 `byte[]`，但当调用传参时，它浪费了很多空间，每个元素占用 31 个字节。最好使用 `bytes`。
-{{< /note >}}
-
-## 动态大小字节数组 {#dynamically-sized-byte-array}
-
-`bytes`:
-
- >  动态长度字节数组，见[数组]({{<ref "#arrays">}})，非值类型！
-
-`string`:
-
->  动态长度的 UTF-8 编码字符串，见[数组]({{<ref "#arrays">}})，非值类型！
-
-根据经验，任意长度的原始 byte 数据使用 `bytes`，任意长途的字符串(UTF-8)数据使用`string`。如果你能限制字节长度到一定数量，要总使用 `bytes1` 到 `bytes32`，因为它们便宜得多。
-
-## 地址字面量 {#address-literals}
-
-通过地址校验的十六进制字面量，例如 `0xdCad3a6d3569DF655070DEd06cb7A1b2Ccd1D3AF` 是一个 `address` 类型。长度在39到41位之间的十六进制字面值，不通过校验会产生警告，并被视为常规的有理数字面值。
-
-{{< note title="Note" >}} 
-[EIP-55](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-55.md)定义了混合大小写的地址校验格式。
-{{< /note >}}
-
-## 有理数和整数字面量 {#rational-and-integer-literals}
-
-整数字面量由 0 到 9 范围内的一系列数字组成，被视作十进制数。例如 `69` 意味着六十九。在 Solidity 中不存在八进制字面量，且高位零 (leading zeros)是无效的。
-
-十进制小数字面量由 一个 `.` 组成，至少一边有数。例如：`1.`、`.1`和`1.3`。
-
-科学记数法也支持，基数可以有小数，而指数不能。例子包括`2e10`，`-2e10`，`2e-10`，`2.5e1`。
-
-例如，尽管中间结果不适应机器字长，可`(2**800 + 1) - 2**800` 返回常量 `1`（类型为 `uint8`）。此外，`.5 * 8` 返回整数`4`（虽然之间使用了非整数）。
-
-只要操作数是整数，任何可以应用到整数的运算符也可以应用于数字字面量表达式中。如果两者中的任何一个是小数，则不允许位操作。如果指数是小数（因为这可能导致非有理数），则不能取幂。
+{{<adm type="tip">}}
+可以使用字节数组作为 `byte[]`，但当调用传参时，每个元素占用 31 个字节，它浪费了很多空间。最好使用 `bytes`。
+{{</adm>}}
 
 
-{{< note title="Note" >}} 
+### 可变字节数组 {#dynamically-sized-byte-array}
+
+> 注：英文为：dynamically-sized byte array ，直译为动态字节数组。觉得非常别扭，因此这里翻译为：可变字节数组。
+
+**bytes**：可变字节字节数组，见[数组]({{<ref "#array">}})，非值类型！
+
+**string**：可变字节的 UTF-8 编码字符串，见[数组]({{<ref "#array">}})，非值类型！
+
+根据经验，任意长度的原始 byte 数据使用 `bytes`，任意长途的字符串(UTF-8)数据使用`string`。如果你能限制字节长度到一定数量，优先使用 `bytes1` 到 `bytes32`，因为它们便宜得多。
+
+### 地址字面量 {#address-literals}
+
+通过地址类型校验的十六进制字面量，例如 `0xdCad3a6d3569DF655070DEd06cb7A1b2Ccd1D3AF` 是一个 `address` 类型。长度在39到41位之间的十六进制字面值，校验不通过会产生警告，并被视为常规的有理数字面值。
+
+{{<adm type="tip">}}
+[EIP-55](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-55.md) 定义了混合大小写的地址校验格式。
+{{</adm>}}
+
+### 有理数和整数字面量 {#rational-and-integer-literals}
+
+整数字面量由 0 到 9 范围内的一系列数字组成，被视作十进制数。例如 `69` 即六十九。在 Solidity 中不存在八进制字面量，且高位零 (leading zeros)是无效的。
+十进制小数字面量由 一个 `.` 组成，至少一边有数。例如：`1.`，`.1`，`1.3`。
+也支持科学记数法，基数可以有小数，而指数不能。例如：`2e10`，`-2e10`，`2e-10`，`2.5e1`。
+
+即使中间量不适应机器字长，可`(2**800 + 1) - 2**800` 返回常量 `1`（类型为 `uint8`）。此外，`.5 * 8` 返回整数`4`（虽然之间使用了非整数）。
+
+只要操作数是整数，任何操作整数的运算符也可以使用于数字字面量表达式中。如果两者中的任何一个是小数，则不允许位操作。如果指数是小数（因为这可能导致非有理数），则不能取幂。
+
+
+{{<adm type="tip">}}
 每个有理数都有一个数字字面量类型。整数字面量和有理数字面量均属于数字字面量类型。此外，所有数字字面量表达式（即仅包含数字字面量和运算符的表达式）属于数字字面量类型。所以数字字面量表达式 `1 + 2` 和 `2 + 1` 对于有理数 3 都属于相同的数字字面量类型。
-{{< /note >}}
+{{</adm>}}
 
 
+{{<adm type="warning" title="除法结果">}} 
+在早期版本中，数字字面量除法是截断的，但现在将转换为**有理数**，即 `5/2` 不等于 `2`，而是等于 `2.5`。
+{{</adm>}}
 
-{{< warning title="除法" >}} 
-在早期版本中，数字字面量除法是截断的，但现在将转换为有理数，即 `5/2` 不等于 `2`，而是等于 `2.5`。
-{{< /warning >}}
 
-
-{{< note title="Note" >}} 
-数字字面量表达式只要与非字面量表达式一起使用，就会转换为非字面量类型。即使我们知道在下面的例子中赋值给 `b` 的表达式值计算为一个整数，但是部分表达式 `2.5 + a`没有进行类型检查，所以代码不会编译。
-{{< /note >}}
+{{<adm type="tip">}}
+数字字面量表达式只要与非字面量表达式一起使用，就会转换为非字面量类型。尽管知道下面示例中赋值给 `b` 的表达式值计算结果为一个整数 4，但是表达式 `2.5 + a` 没通过类型检查，所以编译失败。
 
 ```solidity
 uint128 a = 1;
 uint128 b = 2.5 + a + 0.5;
 ```
+```text
+TypeError: Operator + not compatible with types rational_const 5/2 and uint128
 
-## 字符串字面量 {#string-literal}
+uint128 b = 2.5 + a + 0.5;
+            ^-----^
+```                
+{{</adm>}}
 
-字符串字面量用双引号或单引号括起来（`"foo"`或`bar`）。这不意味着想C语言包含结束符。`"foo"`代表三个字节而非四个。与整数字面量一样，他们类型可变化。可隐式转换为 `bytes1`，...... `bytes32`。如果大小恰当，转换为 `bytes` 和 `string`。
+
+### 字符串字面量 {#string-literal}
+
+字符串字面量用双引号或单引号括起来（`"foo"`或`'bar'`）。与C语言字符串包含结束符不同，`"foo"`代表三个字节而非四个。与整数字面量一样，他们类型可变化。可隐式转换为 `bytes1`，...... `bytes32`，大小合适可转换为 `bytes` 和 `string`。
 
 字符串字面量支持转义字符，如`\n`、`\xNN`和`\uNNNN`。其中`\xNN`取十六进制值并插入大小合适字节，而 `\uNNNN` 采用 Unicode 码点值，插入一个 UTF-8 序列。
 
 
-## 十六进制字面量 {#Hexadecimal-liternal}
+### 十六进制字面量 {#Hexadecimal-liternal}
 
 十六进制字面量带有前缀 `hex` 关键字，并用双引号或单引号括起来(`hex"001122FF"`)。
-
 其内容必须是一个十六进制字符串，其值将用二进制表示。
-
 十六进制字面量行为像字符串字面量，并具有相同的可转换性限制。
 
-## 枚举 {#enum}
+### 枚举 {#enum}
 
-枚举是在 Solidity 中创建用户自定义类型的一种方法。可显式地与整数类型互转，但是不允许隐式转换。 显式转换会在运行时检查值范围，失败会导致异常。 枚举需要至少一个成员。
+枚举是在 Solidity 中创建用户自定义类型的一种方法。可显式地与整数类型互转，但是不允许隐式转换。 显式转换会在运行时检查值范围，失败会导致异常。 
+
+枚举至少需要含一个成员。
 
 ```solidity
 pragma solidity ^0.4.16;
@@ -264,11 +269,10 @@ contract test {
         choice = ActionChoices.GoStraight;
     }
 
-    // Since enum types are not part of the ABI, the signature of "getChoice"
-    // will automatically be changed to "getChoice() returns (uint8)"
-    // for all matters external to Solidity. The integer type used is just
-    // large enough to hold all enum values, i.e. if you have more values,
-    // `uint16` will be used and so on.
+    //因为枚举类型不属于 ABI ，因此对函数 "getChoice" 签名将自动
+    //变成对 "getChoice() returns (uint8)" 的签名。
+    //在 Soldity 中对于外部处理，返回的整数类型是满足枚举值得最小尺寸。
+    //即如果枚举值够大，将被使用 `uint16`。
     function getChoice() public view returns (ActionChoices) {
         return choice;
     }
@@ -279,9 +283,11 @@ contract test {
 }
 ```
 
-## 函数类型 {#function-type}
+### 函数类型 {#function-type}
 
-函数类型是函数的类型，函数类型的变量可以由函数赋值，函数类型的参数可传递函数，且函数调用可返回函数。 函数类型有两类：内部(internal)函数和外部(external)函数。
+函数类型是函数的类型，函数类型的变量可以由函数赋值，函数类型的入参可以是函数，且函数调用可返回函数。 函数类型有两类：内部(internal)函数和外部(external)函数。
+
+> 注：这里有点儿拗口，即可理解为函数也是一种数据类型，可以像其他数据一样被定义、被当为函数入参和返回值。
 
 因为不能在当前合约上下文之外执行内部函数，内部函数只能在当前合约中调用（即在当前合约代码体中，还包括内部库函数和内部函数）。调用内部函数是通过跳到它的入口标签来实现的，就像在内部调用当前合同的函数一样。
 
@@ -295,6 +301,16 @@ function (<parameter types>) {internal|external} [pure|constant|view|payable] [r
 与入参相反，返回值不能为空。 如果函数类型无返回值，则 `returns (<return types>)` 部分必须省去。
 
 函数类型默认为内部函数，因此 关键字 `internal` 可省略。相反，合约函数本身默认是公开的，合约函数只有用作类型名时才默认是内部的。
+
+```solidity
+pragma solidity ^0.4.0; 
+contract action {
+    // 定义变量 set，属于函数类型，无返回值。
+    function (uint) internal  set;
+    // 定义变量 get ，属于函数类型，有返回值。
+    function (uint) internal returns(uint)   get;  
+}
+```
 
 在当前合约中有两种方式访问函数，直接用名称`f`或用`this.f`。前者将按内部函数处理，后者按外部函数处理。
 
@@ -315,30 +331,23 @@ contract Selector {
   }
 }
 ```
-如何使用内部函数类型的示例展示：
+使用内部函数类型的示例：
 ```solidity
 pragma solidity ^0.4.16;
 
 // 库
 library ArrayUtils {
   // 因为在同一个合约代码上下文中，内部函数可作为内部库函数。 
-  function map(uint[] memory self, function (uint) pure returns (uint) f)
-    internal
-    pure
-    returns (uint[] memory r)
+  function map(uint[] memory self, function (uint) pure returns (uint) f) internal pure returns (uint[] memory r)
   {
+    // 创建同样长度的 uint 数组
     r = new uint[](self.length);
+    // 遍历 self 数组元素，将元素值通过调用方法 `f` 后存入数组 r。
     for (uint i = 0; i < self.length; i++) {
       r[i] = f(self[i]);
     }
   }
-  function reduce(
-    uint[] memory self,
-    function (uint, uint) pure returns (uint) f
-  )
-    internal
-    pure
-    returns (uint r)
+  function reduce(uint[] memory self,function (uint, uint) pure returns (uint) f) internal pure returns (uint r)
   {
     r = self[0];
     for (uint i = 1; i < self.length; i++) {
@@ -354,8 +363,12 @@ library ArrayUtils {
 }
 
 contract Pyramid {
+  // 引入库函数
   using ArrayUtils for *;
   function pyramid(uint l) public pure returns (uint) {
+    // 初始化一个 uint[] 数组，长度为 l，值为 0....l-1
+    // 再进行使用map(square)加工使得值求平方，
+    // 最后reduce(sum)获得累计求和值。
     return ArrayUtils.range(l).map(square).reduce(sum);
   }
   function square(uint x) internal pure returns (uint) {
@@ -374,10 +387,12 @@ pragma solidity ^0.4.11;
 contract Oracle {
   struct Request {
     bytes data;
+    // 外部函数类型的字段
     function(bytes memory) external callback;
   }
   Request[] requests;
   event NewRequest(uint);
+  // external 标记外外部函数
   function query(bytes data, function(bytes memory) external callback) public {
     requests.push(Request(data, callback));
     NewRequest(requests.length - 1);
@@ -400,32 +415,32 @@ contract OracleUser {
 }
 ```
 
-{{< note title="Note" >}} 
-Lambda 或内联函数已计划但尚未支持。 
-{{< /note >}}
+{{<adm  type="info" >}} 
+Lambda 表达式和内联函数已计划但尚未支持。 
+{{</adm>}}
 
 ## 引用类型 {#reference-types}
 
-复杂类型，即不能总是适合 256 位的类型，必须比已见的值类型更仔细地处理。因为拷贝它们是十分昂贵的。因此我们不得不考虑是否要将它们存储在内存中（非持久）或存储器（状态变量保持）中。
+复杂类型，即不能总是适合 256 位的类型，因为拷贝它们十分昂贵，必须比上面的值类型更仔细地处理。且我们必须得考虑是否要将它们存储在内存中（非持久）还是存储器（状态变量保持）中。
 
 ### 数据位置 {#data-location}
 
-每一种复杂类型，即数组和结构，都有一个额外的批注，即“数据位置（data location）”，关于它是存储在内存还是存储中。根据上下文，总有一个默认值，但是可以通过在类型中添加`存储 storage`或`内存 memory`来覆盖。函数参数（包括返回参数）的默认值在`内存`中，局部变量的默认值在`存储`中，并且状态变量位置被强制在存储中（显然）。
+每一种复杂类型，即数组和结构，都有一个额外的批注，即“数据位置（data location）”，标记它是存储在内存 memory 还是存储器 storage 中。根据上下文总有一个默认值，但是可以通过在类型中添加`storage`或`memory` 修饰符来覆盖默认值。函数参数（包括返回参数）默认数据位置在内存中，局部变量默认在存储器中，而状态变量位置被强制在存储器中（显然）。
 
-还有第三个数据位置 `calldata` ，它是存储函数参数的一个不可修改的非持久性区域。外部函数的函数入参（不是出参）被强制为 `calldata`，其行为主要与内存相似。
+还有第三个数据位置 `calldata` ，它是存储函数参数的一个不可修改的非持久性区域。外部函数的函数入参（不是出参）被强制存储在 `calldata`，其行为主要与内存相似。
 
-数据位置非常重要，因为它们会改变分配的行为：存储和内存之间的分配以及状态变量（甚至是来自其他状态变量）的分配始终会创建一个独立的副本。对本地存储变量的赋值只能指定一个引用，并且该引用总是指向状态变量，即使后者在此期间被更改。另一方面，从内存存储的引用类型到另一个内存存储的引用类型的分配不会创建副本。
+数据位置非常重要，因为它们会改变存储分配的行为：存储器与内存之间的分配以及状态变量（甚至是来自其他状态变量）的分配始终会创建一个独立的副本。对局部变量的赋值只能指定一个引用，并且引用总是指向状态变量，即使后者期间被更改。另一方面，从内存存储的引用类型到另一个内存存储的引用类型的分配不会创建副本。
 
 ```solidity
 pragma solidity ^0.4.0;
 
 contract C {
-    uint[] x; // x 的数据位置在存储中
+    uint[] x; // x 存储在存储器中
 
     // memoryArray 在内存中
     function f(uint[] memoryArray) public {
-        x = memoryArray; // 正常，复制整个数组到存储
-        var y = x; // 正常，分配指针，y 的数据位置在存储中 
+        x = memoryArray; // 正常，复制整个数组到存储器
+        var y = x; // 正常，分配指针，y 存储在存储器中
         y[7]; // 返回第八个元素
         y.length = 2; // 通过 y 修改 x
         delete x; // 清空数组 x ，也会修改 y 
@@ -447,7 +462,7 @@ contract C {
 }
 ```
 
-**小结**
+#### 小结
 
 + **强制数据位置:**
    + 外部函数入参： calldata
@@ -459,19 +474,19 @@ contract C {
 
 ### 数组 {#array}
 
-数组可以有一个编译期固定的大小，也可以是动态的。对于存储数组，元素类型可以是任意的（即其他数组，map 或结构）。对于内存数组，它不能是一个 map 。如果它是一个公共可见函数的参数，则它必须是一个 ABI 类型。
+数组可以有一个编译期固定的大小，也可以是动态的。对于存储数组，元素类型可以是任意的（如其他数组，映射或结构）。对于内存数组，元素类型不能是[映射类型]({{<ref "#mapping">}}) 。如果它是一个公共可见函数的参数，则元素类型必须是一个 ABI 类型。
 
-一个固定大小 `k` 和元素类型 `T` 的数组可写成 `T[k]`。动态大小的则写成`T[]`。例如，一个有5个动态`uint`数组的数组是`uint[][5]`(（请注意，与其他一些语言相比，表示方式是颠倒的)。访问第三个动态数组的第2个 uint，可用 `x[2][1]` (索引是基于零的，并且访问与声明方式相反，即 `x[2]` 在类型中从右边降一维)
+一个固定大小 `k` 和元素类型 `T` 的数组可写成 `T[k]`。动态大小的则写成`T[]`。例如，元素为动态 uint 数组的定长 5 的数组是`x uint[][5]`(（请注意，与其他一些语言相比，表示方式是颠倒的)。访问第三个动态数组的第二个 uint，可用 `x[2][1]` (索引是基于零的，并且访问与声明方式相反，即 `x[2]` 在类型中从右边降一维)
 
 字节`bytes`和字符串`string`类型的变量是特殊数组。一个 `bytes` 与 `byte[]` 相似，但是紧紧包裹在calldata 中。`string`等价`bytes`，但不允许长度或索引访问(当前)。
 
 因为比较便宜，所以 `bytes` 总是比 `byte[]` 更受欢迎。
 
-{{< note title="Note" >}} 
-如果你想访问字符串`s`的字节形式，使用 `bytes(s).length` 或 `bytes(s)[7]='x'`。请记住，此时你访问的是 UTF-8 表示的低级字节，而不是单个字符！
-{{< /note >}}
+{{<adm type="info" >}} 
+如果你想访问字符串`s`的字节形式，使用 `bytes(s).length` 或 `bytes(s)[7]='x'`。请记住，此时你访问的是 UTF-8 表示的码值，而不是单个字符！
+{{</adm>}}
 
-可将数组标记为`public`，Solidity 会创建一个 [getter](http://solidity.readthedocs.io/en/latest/contracts.html#visibility-and-getters)。数字索引将成为getter 函数的不可缺参数。
+可将数组标记为`public`，Solidity 会创建一个 [getter](http://solidity.readthedocs.io/en/latest/contracts.html#visibility-and-getters)。数组索引将成为 getter 函数的入参。
 
 ### 分配内存数组 {#allocatiing-memory-arrays}
 在内存中创建可变长度的数组可以使用 `new` 关键字来完成。与存储数组相反，通过赋值给成员`.length` 来调整内存数组大小是不可能的。
@@ -770,13 +785,7 @@ var y = x;
 `for (var i = 0; i < 2000; i++) { ... }`
 
 {{< /warning >}}
-
-
-
-{{< note title="Note" >}} 
-{{< /note >}}
-
-
+ 
 
 
 
