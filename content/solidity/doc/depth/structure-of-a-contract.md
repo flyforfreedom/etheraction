@@ -9,7 +9,7 @@ menu:
       parent: "solidityindepth"
 --- 
 
-在 Solidity 中合约类似于面向对象编程语言中的类。每份合约中可定义 [状态变量 State Variables]({{< ref "#state-variables" >}})、[方法 Functions]({{<ref "#functions">}})、[Function Modifiers]({{<ref "#function-modifiers">}})、[事件 Events]({{<ref "#events">}})、[结构类型 Stuct Types]({{<ref "#struct-types">}}) 和 [枚举类型 Enum Types]({{<ref "#enum-types">}})。另外，合约可从其他合约继承。
+在 Solidity 中合约类似于面向对象编程语言中的类。每份合约中可定义 [状态变量 State Variables]({{< ref "#state-variables" >}})、[函数 Functions]({{<ref "#functions">}})、[Function Modifiers]({{<ref "#function-modifiers">}})、[事件 Events]({{<ref "#events">}})、[结构类型 Stuct Types]({{<ref "#struct-types">}}) 和 [枚举类型 Enum Types]({{<ref "#enum-types">}})，另外，合约可从其他合约继承。
 
 
 ## 状态变量 {#state-variables}
@@ -41,9 +41,9 @@ contract SimpleAuction {
 [函数调用]({{<ref "#function-calls">}})可在内部或外部发生，且对不同其他合约有不同的可见级别( [Visibility and Getters)]({{<ref "#visibility-and-getters.md">}}) 
 
 
-## 方法修饰符 {#function-modifiers}
+## 函数修饰符 {#function-modifiers}
 
-方法修饰符可以用来以声明的方式（详见合约章节的[Function Modifiers]({{<ref "#modifiers">}})）修改方法的语义。
+函数修饰符可以用来以声明的方式修改方法的语义（详见合约章节的[Function Modifiers]({{<ref "#modifiers">}})）。
 
 ```solidity
 pragma solidity ^0.4.11;
@@ -63,7 +63,7 @@ contract Purchase {
 ```
 
 ## 事件 {#events}
-事件是太坊虚拟机(EVM) 日志设备的便利入口。
+事件是记录日志到 EVM（太坊虚拟机）日志组件的便利入口。
 
 ```solidity
 pragma solidity ^0.4.0;
@@ -77,7 +77,7 @@ contract SimpleAuction {
     }
 }
 ```
-查阅合约章节中[事件]({{<ref "#events">}})以了解如何定义事件和在 dapp 中怎么使用事件。
+查阅合约章节中[事件]({{<ref "#events">}})以了解如何定义事件和如何在 dapp 中使用事件。
 
 ## 结构类型 {#struct-types}
 

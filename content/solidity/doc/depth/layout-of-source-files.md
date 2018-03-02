@@ -7,10 +7,10 @@ menu:
       parent: "solidityindepth"
 ---
 
-源文件中可以定义任意个合约(contract)、嵌入(inlucde)和杂注(pragma)指令。
+源文件中可以定义任意个合约(contract)、嵌入(inlucde)和 pragma 指令。
  
 
-## 版本杂注
+## 版本 pragma
 
 源文件中能够(也应该)用所谓版本杂注，以便拒绝被含有不兼容性变更的高版本编译器所编译。 我们尽量保持最小变更，特别是语义变化而引起语法变更的，但这总不可能避免。因此，对于有重大变化的新版本，通读更新日志是一个不错的建议。大版本的版本号始终是 `0.x.0`或者 `x.0.0` 形式。  
 
@@ -22,11 +22,13 @@ pragma solidity ^0.4.0;
 
 可以为编译器指定更复杂的编译规则，指令表达式遵循 [npm](https://docs.npmjs.com/misc/semver>) 版本语义。
  
+> 注：Pragma ，是 pragmatic information 的简称。 在 Solidity 中沿用 C ， C++ 等中的编译指令概念，用于告知编译器**如何**编译。
 
 ## 导入其他源文件
 ### 语法与语义 
 
-Solidity 支持导入语句。尽管 Solidity 还不能知道 "default export" 的概念，但已经 非常类似 JavaScript 用法（从 ES6 起）。
+Solidity 支持导入语句。尽管 Solidity 还不能知道 "default export" 语义，但已有
+非常类似 JavaScript 的语法（从 ES6 起）。
 
 在全局级上，你可使用下面格式使用导入语句：
 ```solidity
@@ -75,7 +77,7 @@ import "github.com/ethereum/dapp-bin/library/iterable_mapping.sol" as it_mapping
 ```bash
 solc github.com/ethereum/dapp-bin/=/usr/local/dapp-bin/ source.sol
 ```
-作为一个更复杂的例子，假设你依赖一个非常旧版本的 dapp-bin 上的一些模块。 旧版本 dapp-bin 签出到`/usr/local/dapp-bin_old`, 那么你可使用：
+举个更复杂的例子，假设你依赖一个非常旧版本的 dapp-bin 上的一些模块。 旧版本 dapp-bin 签出到`/usr/local/dapp-bin_old`, 那么你可使用：
 ```bash
 solc module1:github.com/ethereum/dapp-bin/=/usr/local/dapp-bin/ \
      module2:github.com/ethereum/dapp-bin/=/usr/local/dapp-bin_old/ \
@@ -109,10 +111,7 @@ multi-line comment.
 此外，有另一种注释称为 natspec 注释，其文档尚未编写。 它们用三扛（`///`）或双星块(`/** ... */`)编辑，它应直接在方法声明或语句上使用。你可在注释中使用 [Doxygen](https://en.wikipedia.org/wiki/Doxygen)样式的标签来文档化方法，解释正常验证的条件。并提供一个 **确认信息**，可在用户尝试调用一个方法时提示。  
 
 
-下面示例，我们记录合约标题和解释两个入参、两个返回值。
-
-In the following example we document the title of the contract, the explanation
-for the two input parameters and two returned values.
+下面示例，我们记录合约标题和解释两个入参、两个返回值。 
 
 ```solidity
 pragma solidity ^0.4.0;
