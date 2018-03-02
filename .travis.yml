@@ -3,12 +3,10 @@ node_js:
 - node
 sudo: required
 dist: trusty
-
 branches:
   only:
   - master
-before_install: 
-# for html-minifier
+before_install:
 - sudo pip install Pygments
 - sudo pip install pygments-lexer-solidity
 install:
@@ -16,9 +14,26 @@ install:
 - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.deb
   -O $PWD/work/hugo.deb
 - sudo dpkg -i $PWD/work/hugo.deb
-- npm install
-script:
-- grunt deploy
+- npm install 
+
+before_deploy:
+- grunt build   
+
+deploy:
+  - provider: pages
+    skip-cleanup: true
+    local-dir: public
+    github-token: $GH_TOKEN 
+    
+  - provider: gcs
+    bucket: ethereum.mochain.info
+    skip_cleanup: true
+    acl: public-read
+    local-dir: public
+    access_key_id: GOOGFSQWCWZ3UMQLN2H4
+    secret_access_key:
+      secure: ZwDhYCBcneLAuYUK5aRI7PRzY1f8Z4sKowXwmURrSTOwrZGLwP6CG+L4DiBZY4erSo7Akgykek8Rz04hHvM2W99xIjsDLe6Lc0zUxEIVKnGVok0hX5uySg8XUbCz6mZZhhFWGFhrmCGbsvQIJEX1IHFfmQjFagNWSVuz3Q7PTNdVEu5KC8yR6Yo6rCUNLcbNO9m0IasATQ2AA6op6RNy0Agk27FDmQOhSxJH1eoB+ujs2eqaAazUMITglTh8FWdFd0QHzprIyaezPF6XSgck9AQJCXH4oUPu+hZLrFsK9T2mmg7ERp/LS7Em2+NfYjvUmn7auISZzVHV9ryhV74CbTxFs+dvpIb2KkvrR9idB649UrPytdEqMehyPL7ZRAHFIj494uDyWyNkHh6SffLnE7CY9elSLbhsSPt+cKRaEwpFnu2Rnx4D8gpBntXS4/7q5hT32vvHxR3J8dYs5qFfbNYQvBPVvuJOhfw7kaVIA/lp+ReZRxO2PqAzLHe4QAFoflyY0jzf3AmbUKcxm/E8cGQs7qPN+E+ogMvO4TPHGvUnc+vAYhtoPIxAZb9Z5Qyky2zbR8m30/XLxGBD5RyUVaUto9sSD3phnFtunqiBv1MBjWTavzXKN73AQV9GmA1ptS2O6e6aBfjODcH+nBR2IdOci19amBuTdYkxbS3gWiE=
+
 
 env:
   global:

@@ -1,4 +1,4 @@
-baseurl = "https://ether.goall.top" 
+baseurl = "https://etheraction.mochain.info" 
 languageCode = "zh-cn"
 title = "精通以太坊"
 theme = "material"
@@ -9,7 +9,7 @@ uglyURLs = true
 googleAnalytics = ""
 
 # 启用rebots
-enableRobotsTXT = true 
+enableRobotsTXT = false 
 
 # user pygment and 
 pygmentsUseClassic = true 
