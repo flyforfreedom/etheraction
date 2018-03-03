@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://ethereum.mochain.info/basic/</loc>
+    <lastmod>2016-03-09T00:11:02+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/basic/ethereum/</loc>
+    <lastmod>2016-03-09T00:11:02+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/basic/ethereum/gas.html</loc>
+    <lastmod>2016-03-09T00:11:02+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/solidity/doc/</loc>
+    <lastmod>2018-01-20T06:10:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/solidity/doc/introduction-to-smart-contracts.html</loc>
+    <lastmod>2018-01-20T06:15:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/solidity/doc/installing-solidity.html</loc>
+    <lastmod>2018-01-20T06:16:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/solidity/doc/solidity-by-example.html</loc>
+    <lastmod>2018-01-20T06:30:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/solidity/doc/depth/</loc>
+    <lastmod>2018-01-21T06:29:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/solidity/doc/depth/layout-of-source-files.html</loc>
+    <lastmod>2018-01-21T06:29:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/solidity/doc/depth/types.html</loc>
+    <lastmod>2018-01-22T06:41:39+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/solidity/doc/units-and-global-variables.html</loc>
+    <lastmod>2018-02-01T06:59:32+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/solidity/doc/control-structures.html</loc>
+    <lastmod>2018-02-04T07:50:30+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/solidity/doc/contracts.html</loc>
+    <lastmod>2018-02-06T06:48:06+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/solidity/doc/assembly.html</loc>
+    <lastmod>2018-02-15T06:16:01+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/action/</loc>
+    <lastmod>2018-01-19T16:54:03+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/action/game/</loc>
+    <lastmod>2018-01-19T16:56:02+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/action/lottery/</loc>
+    <lastmod>2018-01-19T16:56:10+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/action/token/</loc>
+    <lastmod>2018-01-19T16:56:16+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/about/</loc>
+    <lastmod>2016-03-09T20:10:46+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/about/license.html</loc>
+    <lastmod>2016-03-09T20:10:46+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/contract/</loc>
+    <lastmod>2016-03-09T00:11:02+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/</loc>
+    <lastmod>2016-03-08T21:07:13+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/about.html</loc>
+    <lastmod>2016-03-09T20:10:46+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/action.html</loc>
+    <lastmod>2018-01-19T16:54:03+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/basic.html</loc>
+    <lastmod>2016-03-09T00:11:02+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/categories.html</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/contract.html</loc>
+    <lastmod>2016-03-09T00:11:02+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/solidity.html</loc>
+    <lastmod>2018-01-20T06:10:54+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/tags.html</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://ethereum.mochain.info/</loc>
+    <lastmod>2016-03-09T00:11:02+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

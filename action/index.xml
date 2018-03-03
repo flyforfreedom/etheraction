@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Actions on 精通以太坊</title>
+    <link>http://ethereum.mochain.info/action.html</link>
+    <description>Recent content in Actions on 精通以太坊</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>根据Apache 2.0 许可发布</copyright>
+    <lastBuildDate>Fri, 19 Jan 2018 16:54:03 +0800</lastBuildDate>
+    
+	<atom:link href="http://ethereum.mochain.info/action/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>实战</title>
+      <link>http://ethereum.mochain.info/action/</link>
+      <pubDate>Fri, 19 Jan 2018 16:54:03 +0800</pubDate>
+      
+      <guid>http://ethereum.mochain.info/action/</guid>
+      <description>三个案例，三次领悟</description>
+    </item>
+    
+    <item>
+      <title>以太碟游戏</title>
+      <link>http://ethereum.mochain.info/action/game/</link>
+      <pubDate>Fri, 19 Jan 2018 16:56:02 +0800</pubDate>
+      
+      <guid>http://ethereum.mochain.info/action/game/</guid>
+      <description>待定
+还没有开始写哦&amp;hellip;.
+ </description>
+    </item>
+    
+    <item>
+      <title>快3彩票</title>
+      <link>http://ethereum.mochain.info/action/lottery/</link>
+      <pubDate>Fri, 19 Jan 2018 16:56:10 +0800</pubDate>
+      
+      <guid>http://ethereum.mochain.info/action/lottery/</guid>
+      <description>待定
+还没有开始写哦&amp;hellip;.
+ </description>
+    </item>
+    
+    <item>
+      <title>五彩石代币</title>
+      <link>http://ethereum.mochain.info/action/token/</link>
+      <pubDate>Fri, 19 Jan 2018 16:56:16 +0800</pubDate>
+      
+      <guid>http://ethereum.mochain.info/action/token/</guid>
+      <description>五彩石代币 是以太坊的Token资产实现。
+待定
+还没有开始写哦&amp;hellip;.
+ </description>
+    </item>
+    
+  </channel>
+</rss>

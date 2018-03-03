@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Solidities on 精通以太坊</title>
+    <link>http://ethereum.mochain.info/solidity.html</link>
+    <description>Recent content in Solidities on 精通以太坊</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>根据Apache 2.0 许可发布</copyright>
+    <lastBuildDate>Sat, 20 Jan 2018 06:10:54 +0800</lastBuildDate>
+    
+	<atom:link href="http://ethereum.mochain.info/solidity/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>简介</title>
+      <link>http://ethereum.mochain.info/solidity/doc/</link>
+      <pubDate>Sat, 20 Jan 2018 06:10:54 +0800</pubDate>
+      
+      <guid>http://ethereum.mochain.info/solidity/doc/</guid>
+      <description>Solidity  Solidity 是面向智能合约的高级编程语言，它的设计受 C++、Python和JavaScript影响，旨在针对以太坊虚拟机(EVM)。
+Solidity 是静态类型语言，支持继承，库和复杂的自定义类型等功能。
+正如你见，它可用来创建投票，众筹，盲目拍卖，多签名钱包等等合同。
+Note
+现在，学习 Solidity 的最佳途径是用在线IDE Remix(可能需要加载一段时间完成准备，请耐心等待)。
+ 交易 下面文档已被社区志愿者翻译成几种语言，但是英文版可作为参考。
+ Spanish Russian(已过时)  有用链接  以太坊官网 Solidity更新日志 用例看板 Solidity开源代码 以太坊 Stackexchange Gitter聊天  可用的 Solidity 集成  Remix 基于浏览器的IDE，含编译器和运行环境，无需服务端组件。
+ IntelliJ IDEA 插件 集成到Intillij IDEA 的Solidity插件（支持所有的 JetBrains IDE）。
+ Visual Studio 扩展 含 Solidity 编译器的 微软 Visual Studio 插件。
+ SublimeText包- Solidity语法高亮 SublimeText编辑器中支持对 Solidty 语法高亮。
+ Etheratom Atom 编辑器的 Solidity 插件，支持语法高亮，编译和一个运行时环境（后端节点与 VM 兼容）。</description>
+    </item>
+    
+    <item>
+      <title>智能合约介绍</title>
+      <link>http://ethereum.mochain.info/solidity/doc/introduction-to-smart-contracts.html</link>
+      <pubDate>Sat, 20 Jan 2018 06:15:54 +0800</pubDate>
+      
+      <guid>http://ethereum.mochain.info/solidity/doc/introduction-to-smart-contracts.html</guid>
+      <description>一个简单的智能合约 如果你智能合约知之甚少，那从些简单的示例开始是必要的，更多细节后续再讲讲。
+存储 pragma solidity ^0.4.0; contract SimpleStorage { uint storedData; function set(uint x) public { storedData = x; } function get() public constant returns (uint) { return storedData; } }  首行简洁的说明该源代码为Solidity 0.4.0版本编写或兼容新版本(直到但不包含0.5.0版本)。已确保合约不会与新版编译器有突异行为。被用关键字pragma原因是，一般编译指令是告知编译器该如何对待源代码（如：pragma once(编译一次)）。
+一份Solidity所示合同就是一组代码(称为方法)合集和数据（称为状态），而数据位于以太坊区块链上特点地址上。行uint storedData;声明了一个类型为unit(无符号256位整数)的状态变量，名为storeData。你可将其想象为在数据库上的单个插槽，能通过调用管理数据库的代码来访问与修改。在以太坊下，它始终属于合约。这个示例中，方法set和get就能修改和获得此变量值。
+为访问状态变量，无需借助这个在其他语言常见的前缀this.。
+除允许任何人存储存储一个任何人都可访问的数字，而没有（可行的）方法类阻止你发布这个数字，这个合约做的还远远不够（基于以太坊建立基础设施）。当然，任何人只需再次用不同的值调用set就可覆盖这个数字。但是这个数字仍被存储在区块链的历史记录中。稍后我们来看看如何加强访问限制，以便只有你才能改变它。
+提醒
+所有标识符（合约名，函数名和变量名）都被限制为 ASCII 字符集。可以将 UTF-8 格式数据存储在字符串变量中。
+ 当心 Unicode 字符
+看着很像（甚至一样）的 Unicode 字符是由不同的代码表示的，因此会被编码称不同的字节数组。
+ 子币示例 下面的合约将实现简单版加密货币。可以凭空创建币，但是只有创建这个合约的人才可这样做（实行不同的发行计划是微不足道的）。此外，任何人可以发送币到其他人而不需要使用用户名和密码注册 - 你仅需要一个以太坊密钥。
+pragma solidity ^0.4.0; contract Coin { // The keyword &amp;quot;public&amp;quot; makes those variables // readable from outside.</description>
+    </item>
+    
+    <item>
+      <title>安装 Solidity</title>
+      <link>http://ethereum.mochain.info/solidity/doc/installing-solidity.html</link>
+      <pubDate>Sat, 20 Jan 2018 06:16:54 +0800</pubDate>
+      
+      <guid>http://ethereum.mochain.info/solidity/doc/installing-solidity.html</guid>
+      <description>版本 不但发行版版本名遵循语意化版本原则，每晚自动构建版也遵循原则。尽管我们努力确保其正常，但有些非正式或破坏性变更会被包含，而使得每晚自动构建的版本也许无法正常使用。
+推荐使用最新发行版，下面使用最新发行版进行安装说明。
+Remix  推荐使用 Remix 来开发简单合约和快速学习 Solidity。
+ 无需安装任何东西，就可在线使用Reminx。如果你想离线使用，可按 https://github.com/ethereum/browser-solidity/tree/gh-pages 页面说明下载 zip 文件使用。
+该页面有进一步详细说明如何安装 solidity 命令行编译器到你计算机上。如果你刚好要处理大型合约，或者需要更多的编译选项，那么选择使用命令行编译器 solc。
+npm/ Node.js 使用 npm 安装 Solidity 编译器 solcjs 小菜一碟。solcjs 程序的功能比本页下面的所有选项都要少。在编译器 文档中，我们假定你所使用完整功能的编译器。 所以如果你是从 npm 安装 solcjs ，就此打住，直接跳到 solc-js 去了解。
+Note
+solcjs 是利用 Emscripten 从 C++ 版的 solc 跨平台编译为 JavaScript 的。可在 JavaScript 项目中使用 solcjs (同 Remix)。 具体介绍请查看 solcjs 代码库。
+ npm install -g solc  Note
+命令行工具名称为 solcjs
+solcjs 的命令行选项同 solc 和一些工具(如 geth )是不兼容的。solcjs 是阉割版的 solc。</description>
+    </item>
+    
+    <item>
+      <title>Solidity 示例</title>
+      <link>http://ethereum.mochain.info/solidity/doc/solidity-by-example.html</link>
+      <pubDate>Sat, 20 Jan 2018 06:30:54 +0800</pubDate>
+      
+      <guid>http://ethereum.mochain.info/solidity/doc/solidity-by-example.html</guid>
+      <description>投票 下面合约十分复杂，但也展示了 Solidity 的许多特性。它实现的是一个投票合约。当然，电子投票的主要问题是如何确保合法投票人权利和避免暗箱操作。这里，我们先不需处理这些问题，先至少能看到如何委托投票，能自动记票，同时还是完全透明的。
+想法是为每次选票创建一个合约，提供投票项简称。合约创建者充当主席，给每个地址分配投票权。地址背后的人类，就可以自行投票或者将投票权委托给他信任的第三方。在投票截止时，winningProposal方法返回投票数最多的提案。
+pragma solidity ^0.4.16; /// @title 代表团投票 contract Ballot { // 定义一个新的复合类型，会作为合约变量。 // 代表一名选民。 struct Voter { uint weight; // 累计的投票权重 bool voted; // 为 true 说明选名已投票 address delegate; // 选民委托给第三方 uint vote; // 投票提案项 } // 投票单个提案项 struct Proposal { bytes32 name; // 简称(32字节) uint voteCount; // 获票累计数 } address public chairperson; // 声明了一个状态变量来存储每个地址所代表的 `Voter` 信息。  mapping(address =&amp;gt; Voter) public voters; // 声明一个 `Proposal` 动态数组.</description>
+    </item>
+    
+    <item>
+      <title>深入了解 Solidity</title>
+      <link>http://ethereum.mochain.info/solidity/doc/depth/</link>
+      <pubDate>Sun, 21 Jan 2018 06:29:18 +0800</pubDate>
+      
+      <guid>http://ethereum.mochain.info/solidity/doc/depth/</guid>
+      <description>此章节将介绍关于 Solidity 所应了解的一切。如果有些在这没有，请在 Gitter反馈给我们或者在 GitHub 上发一个PR。</description>
+    </item>
+    
+    <item>
+      <title>源文件布局</title>
+      <link>http://ethereum.mochain.info/solidity/doc/depth/layout-of-source-files.html</link>
+      <pubDate>Sun, 21 Jan 2018 06:29:18 +0800</pubDate>
+      
+      <guid>http://ethereum.mochain.info/solidity/doc/depth/layout-of-source-files.html</guid>
+      <description>源文件中可以定义任意个合约(contract)、嵌入(inlucde)和 pragma 指令。
+版本 pragma 源文件中能够(也应该)用所谓版本杂注，以便拒绝被含有不兼容性变更的高版本编译器所编译。 我们尽量保持最小变更，特别是语义变化而引起语法变更的，但这总不可能避免。因此，对于有重大变化的新版本，通读更新日志是一个不错的建议。大版本的版本号始终是 0.x.0或者 x.0.0 形式。
+版本杂注使用方式如下：
+pragma solidity ^0.4.0;  这样的源文件将不会使用低于版本 0.4.0 的编译器编译，也不适用于从 0.5.0 开始的编译器（被 ^ 限制）。 这做法背后的思想是，在版本 0.5.0 之前不会有任何重大改变，所以我们可确保代码始终按照我们的意愿进行编译。我们没有修复编译器的确切版本，因此补丁版仍然是有可能的。
+可以为编译器指定更复杂的编译规则，指令表达式遵循 npm 版本语义。
+ 注：Pragma ，是 pragmatic information 的简称。 在 Solidity 中沿用 C ， C++ 等中的编译指令概念，用于告知编译器如何编译。
+ 导入其他源文件 语法与语义 Solidity 支持导入语句。尽管 Solidity 还不能知道 &amp;ldquo;default export&amp;rdquo; 语义，但已有 非常类似 JavaScript 的语法（从 ES6 起）。
+在全局级上，你可使用下面格式使用导入语句：
+import &amp;quot;filename&amp;quot;;  此语句将从 filename 中导入所有的全局符号到到当前全局域中（不同于 ES6 但 Solidity 是向后兼容）。
+import * as symbolName from &amp;quot;filename&amp;quot;;  &amp;hellip;&amp;hellip;创建一个新全局符号 symbolName，成员均是来自 &amp;quot;filename&amp;quot; 中全局符号。</description>
+    </item>
+    
+    <item>
+      <title>类型</title>
+      <link>http://ethereum.mochain.info/solidity/doc/depth/types.html</link>
+      <pubDate>Mon, 22 Jan 2018 06:41:39 +0800</pubDate>
+      
+      <guid>http://ethereum.mochain.info/solidity/doc/depth/types.html</guid>
+      <description>Solidity 是一门静态类型语言，意味着每个变量（状态变量和局部变量）类型都需要在编译期确定（或至少是已知的见下方 类型断言）。 Solidity 提供了几个基础类型，可以组合成复杂类型。
+此外，类型可在含运算符的表达式中交互。快速查阅各种运算，请见运算符优先级
+值类型 下面所列类型均可称为值类型，因为它们的变量总是值传递。即当作为方法参数或用作赋值时，总是值拷贝。
+布尔型 布尔类型 bool ，其只可能有的值是常量 true 和 false 。
+运算符有：
+ ! ： 逻辑否 &amp;amp;&amp;amp; ： 逻辑且(and) || ： 逻辑或(or) == ： 等于 != ： 不等于  || 和 &amp;amp;&amp;amp; 运算符常用短路求值(short-circuiting)策略。意思是在表达式 f(x) || g(y) 中，如果 f(x) 运算结果是 true ，则 g(y) 不会被运算，哪怕它有副作用。
+Wiki 短路求值（Short-circuit evaluation，又称最小化求值），是一种逻辑运算符的求值策略。只有当第一个运算数的值无法确定逻辑运算的结果时，才对第二个运算数进行求值。例如，当 AND 的第一个运算数的值为 false 时，其结果必定为 false ；当 OR 的第一个运算数为 true 时，最后结果必定为 true ，在这种情况下，就不需要知道第二个运算数的具体值。在一些语言中（如Lisp），默认的逻辑运算符就是短路运算符，而在另一些语言中（如 Java，Ada ），短路和非短路的运算符都存在。对于一些逻辑运算，如 XOR，短路求值是不可能的 。
+短路表达式x AND y，事实上等价于条件语句：if x then y else false。短路表达式x OR y，则等价于条件语句：if x then true else y。</description>
+    </item>
+    
+    <item>
+      <title>单位和全局变量</title>
+      <link>http://ethereum.mochain.info/solidity/doc/units-and-global-variables.html</link>
+      <pubDate>Thu, 01 Feb 2018 06:59:32 +0800</pubDate>
+      
+      <guid>http://ethereum.mochain.info/solidity/doc/units-and-global-variables.html</guid>
+      <description>以太币单位 一个带有 wei，finney， szabo 或 ether 后缀的字面量数字，可在以太币各单位间转换。没有后缀的以太币数字假定为 Wei。例如 2 ether == 2000 finney 计算结果为 true.
+Tip
+ Kwei(Babbage) = 10 ** 3 Wei Mwei(Lovelace) = 10 ** 6 Wei Gwei(Shannon) = 10 ** 9 Wei Microether(Szabo) = 10 ** 12 Wei Milliether(Finney) = 10 ** 15 Wei Ether = 10 ** 18 Wei   时间单位 有后缀 seconds，minutes，hours，days，weeks 或 years 的字面量数字，可在时间上互转。时间的基本单位是秒，如下时间为公理：
+ 1 == 1 seconds 1 minutes == 60 seconds 1 hours == 60 minutes 1 days == 24 hours 1 weeks == 7 days 1 years == 365 days  请小心使用这些单位进行日历计算，因为不是每年都有 365 天，甚至因为闰秒每天不都有 24 小时。由于闰秒无法预测，一个确切的日历库必须由外部预言（external oracle）进行更新。</description>
+    </item>
+    
+    <item>
+      <title>表达式与控制结构</title>
+      <link>http://ethereum.mochain.info/solidity/doc/control-structures.html</link>
+      <pubDate>Sun, 04 Feb 2018 07:50:30 +0800</pubDate>
+      
+      <guid>http://ethereum.mochain.info/solidity/doc/control-structures.html</guid>
+      <description>入参与出参 同 JavaScript 相同的是，函数可以把参数作为输入。不同于 JavaScript 和 C 的是也可返回任意数量的参数作为输出。
+入参 输入参数声明方式与定义变量相同。作为例外，未使用的参数可以省略变量名称。例如，假设希望合约接受具有两个整数的外部调用，会如下写：
+pragma solidity ^0.4.16; contract Simple { function taker(uint _a, uint _b) public pure { // 用 _a 和 _b 做些事情 } }  出参 在 returns 关键字后声明出参语法同入参。例如，假设希望返回两个结果：两个给定整数的总和和乘积，那么会写成：
+pragma solidity ^0.4.16; contract Simple { function arithmetics(uint _a, uint _b) public pure returns (uint o_sum, uint o_product) { o_sum = _a + _b; o_product = _a * _b; } }  可忽略出参参数名，输出值也可使用 return 语句指定。return语句也可返回多个值，见多值返回。返回参数被初始化为默认值零，如果没有明确赋值则保持为零。</description>
+    </item>
+    
+    <item>
+      <title>合约</title>
+      <link>http://ethereum.mochain.info/solidity/doc/contracts.html</link>
+      <pubDate>Tue, 06 Feb 2018 06:48:06 +0800</pubDate>
+      
+      <guid>http://ethereum.mochain.info/solidity/doc/contracts.html</guid>
+      <description>Solidity 中的合约类似面向对象编程语言中的类，包含持久化数据（状态变量）和可修改这些变量的函数。通过 EVM 方法来调用另一个合约中函数，同时切换上下文使得原合约状态变量不可访问。
+创建合约 合同可以通过以太坊交易从“外部”或从合约中创建。IDE 如 Remix 界面操作全流程创建合约。
+以太坊中，最好通过 JavaScript API web3.js 编写创建智能合约。当前有 web3.eth.Contract API 可创建合约。
+当创建合约时，它的构造器（一个名称和合约名相同的函数）会执行一次。构造函数可选，但只允许有一个且不支持重载。
+在 EVM 内部，构造函数入参在合约自身代码之后通过 ABI 编码，如果使用 web3.js 则不需要关心这些细节。
+当合约创建合约时，创建者必须事先清楚被创建合约源代码（和字节码），这意味着不可能循环创建合约。
+pragma solidity ^0.4.16; contract OwnedToken { // TokenCreator 是下方定义的合约类型  // 只要不用于创建新合约，引用 TokenCreator creator; address owner; bytes32 name; // 此合约构造器将注册创建者和分配名称 function OwnedToken(bytes32 _name) public { // 用状态变量名访问状态变量，而不是用 this.owner，这也适合在函数中 。 // 也只能调用这些状态变量，因为合约自身尚未创建。  owner = msg.sender; // We do an explicit type conversion from `address` // to `TokenCreator` and assume that the type of // the calling contract is TokenCreator, there is // no real way to check that.</description>
+    </item>
+    
+    <item>
+      <title>Soldity 汇编</title>
+      <link>http://ethereum.mochain.info/solidity/doc/assembly.html</link>
+      <pubDate>Thu, 15 Feb 2018 06:16:01 +0800</pubDate>
+      
+      <guid>http://ethereum.mochain.info/solidity/doc/assembly.html</guid>
+      <description>Solidity 定义了一种汇编语言，可不用Solidity 下使用。也可在 Solidity 源代码中作为“内联汇编”使用。下面开始介绍怎么使用内联汇编和与独立汇编有何不同，并讲解其特殊性。
+内联汇编 在 Solidity 语句中交叉使用汇编，以更加接近虚拟机语言，可更细致控制，特别是为通过编写库来增强语言。因为实际上 EVM 为堆栈机，通常很难解决正确的堆栈插槽问题，并为堆栈上正确的操作码提供参数。 Solidity的内联汇编试图通过以下功能来简化手动汇编时出现的问题：
+ 函数式操作码：mul(1, add(2, 3))代替push1 3 push1 2 add push1 1 mul。 汇编局部变量：let x := add(2, 3) let y := mload(0x40) x := add(x, y)。 访问外部变量：function f(uint x) public { assembly { x := sub(x, 1) } }。 标签：let x := 10 repeat: x := sub(x, 1) jumpi(repeat, eq(x, 0)) 循环：for { let i := 0 } lt(i, x) { i := add(i, 1) } { y := mul(2, y) }。 If 语句：if slt(x, 0) { x := sub(0, x) }。 Switch 语句：switch x case 0 { y := mul(x, 2) } default { y := 0 }。 函数调用：function f(x) -&amp;gt; y { switch x case 0 { y := 1 } default { y := mul(x, f(sub(x, 1))) } }。  下面将详细介绍内联汇编。</description>
+    </item>
+    
+  </channel>
+</rss>
