@@ -1,4 +1,4 @@
-baseurl = "https://etheraction.mochain.info" 
+baseurl = "http://ethereum.mochain.info" 
 languageCode = "zh-cn"
 title = "精通以太坊"
 theme = "material"
