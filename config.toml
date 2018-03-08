@@ -11,6 +11,12 @@ googleAnalytics = ""
 # 启用rebots
 enableRobotsTXT = false 
 
+# If the Hugo site is versioned by Git, 
+# you will then get a .GitInfo object per page, and 
+# Lastmod will get updated by the last commit date for content.
+# see: https://gohugo.io/variables/git/
+enableGitInfo = false
+
 # user pygment and 
 pygmentsUseClassic = true 
 pygmentsuseclasses = true
@@ -25,8 +31,8 @@ pygmentsstyle = "friendly"
 
 	# Repository
 	provider = "GitHub"
-	repo_name = "ysqi/etheraction"
-	repo_url = "https://github.com/ysqi/etheraction"
+	repo_name = "mochain/etheraction"
+	repo_url = "https://github.com/mochain/etheraction"
 
 	version = "1.0.0"
 	logo = "images/logo.png"
