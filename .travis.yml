@@ -20,10 +20,10 @@ before_deploy:
 - grunt build   
 
 deploy:
-  - provider: pages
-    skip-cleanup: true
-    local-dir: public
-    github-token: $GH_TOKEN 
+  # - provider: pages
+  #   skip-cleanup: true
+  #   local-dir: public
+  #   github-token: $GH_TOKEN 
     
   - provider: gcs
     bucket: ethereum.mochain.info
